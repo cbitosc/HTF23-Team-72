@@ -78,7 +78,7 @@
     font-weight: 900;
     margin: 30px 0px;
     text-shadow: 2px 10px rgba(0, 0, 0, 0.6);
-    color: chocolate;
+    color: lightblue;
   }
   
   .current .temp span {
@@ -89,7 +89,7 @@
     color: #fff;
     font-size: 32px;
     font-weight: 700;
-    font-style: italic;
+    font-style: normal;
     margin-bottom: 15px;
     text-shadow: 0px 3px rgba(0, 0, 0, 0.4);
     color: aqua;
@@ -101,9 +101,9 @@
   .wind {
     color: #fff;
     font-size: 24px;
-    font-weight: 500;
+    font-weight: 1000;
     text-shadow: 0px 2px rgba(0, 0, 0, 0.4);
-    color: darkgoldenrod;
+    color: lightblue;
   }
 
   .title{
@@ -131,7 +131,15 @@
     align-items: center;
     justify-content: center;
   }
-
+  .search-button{
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
   .get-location-button{
     background-color: #3498db; /* Button background color */
   color: #fff; /* Text color */
@@ -161,11 +169,12 @@
  .forecast-card{
   width: 200px;
       height: 200px;
-      background: linear-gradient(45deg, #3498db, #9b59b6); /* Gradient background */
+      background: linear-gradient(45deg, #353636, #040205); /* Gradient background */
       border: 2px solid #2980b9;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow */
       color: #fff; /* Text color */
       text-align: center;
+      border-color: grey;
       padding: 20px;
       font-size: 12x;
       border-radius: 10px; /* Rounded corners */
@@ -188,9 +197,9 @@
   .date6 {
     padding-bottom: 10px;;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 750;
     text-shadow: 0px 2px rgba(0, 0, 0, 0.4);
-    color: darkgoldenrod;
+    color: white;
   }
 
   .temp1,
@@ -233,6 +242,9 @@
     font-size: 15px;
     font-weight: 500;
     text-shadow: 0px 2px rgba(0, 0, 0, 0.4);
-    color: magenta;
+    color: lightblue;
   }
 
+.forecast-title{
+  color : orange;
+}
