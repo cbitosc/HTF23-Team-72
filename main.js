@@ -3,6 +3,7 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/"
 };
 
+
 const videoContainer = document.querySelector(".video-container");
 const hoverVideo = document.getElementById("hover-video");
 
@@ -69,6 +70,12 @@ function displayResults(weather) {
 
   let hilow = document.querySelector('.hi-low');
   hilow.innerText = ` ${Math.round(weather.main.temp_min)}°c / Max: ${Math.round(weather.main.temp_max)}°c`;
+
+  let humid = document.querySelector('.humidity');
+  humid.innerText = `Humidity: ${weather.main.humidity}%`;
+
+  let wind = document.querySelector('.wind');
+  wind.innerText = `Wind: ${weather.wind.speed} km/h`;
 }
 
 
