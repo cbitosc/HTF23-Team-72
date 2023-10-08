@@ -4,6 +4,27 @@ const api = {
 };
 
 
+const getDataFor7Days = async (lat, lon) => {
+  const api = 'fcc8de7015bbb202209bbf0261babf4c'; // Replace with your OpenWeatherMap API key
+  const url = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${api}`;
+
+  try {
+    const res = await fetch(url);
+
+    if (!res.ok) {
+      throw new Error(`Request failed with status ${res.status}`);
+    }
+
+    const data = await res.json();
+    console.log("Data received:", data);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+
+// Call the function with valid lat and lon values
+
+
 const videoContainer = document.querySelector(".video-container");
 const hoverVideo = document.getElementById("hover-video");
 
@@ -25,6 +46,7 @@ function getLocation() {
       const latitude = position.coords.latitude;
       const longitude = position.coords.longitude;
       getWeatherByCoordinates(latitude, longitude);
+      getForecastByCoordinates(latitude, longitude);
     });
   } else {
     alert('Geolocation is not supported by your browser.');
@@ -52,6 +74,26 @@ function getWeatherByCoordinates(latitude, longitude) {
     })
     .then(displayResults);
 }
+
+function getForecastByCoordinates(latitude, longitude) {
+  fetch(`${api.base}onecall?lat=${latitude}&lon=${longitude}&exclude=current,minutely,hourly,alerts&units=metric&APPID=${api.key}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Request failed with status ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      displayForecast(data);
+      console.log("data") // Pass the data to the displayForecast function
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
+
+
+
 
 function displayResults(weather) {
   let city = document.querySelector('.location .city');
@@ -94,6 +136,53 @@ function displayResults(weather) {
   }
 }
 
+function displayForecast(data) {
+  const forecastData = data.daily.slice(1, 8); // Extract data for the next 7 days (excluding the current day)
+
+  forecastData.forEach((dayData, index) => {
+    const date = new Date(dayData.dt * 1000); // Update date calculation
+    const temperature = dayData.temp.day;
+    const minTemperature = dayData.temp.min;
+    const maxTemperature = dayData.temp.max;
+    const humidity = dayData.humidity;
+    const windSpeed = dayData.wind_speed;
+    const weatherType = dayData.weather[0].main;
+
+    // Update the HTML elements for each day's forecast
+    const dateElement = document.querySelector(`.date${index + 1}`);
+    const tempElement = document.querySelector(`.temp${index + 1}`);
+    const weatherElement = document.querySelector(`.weather${index + 1}`);
+    const hiLowElement = document.querySelector(`.hi-low${index + 1}`);
+    const humidityElement = document.querySelector(`.humidity${index + 1}`);
+    const windElement = document.querySelector(`.wind${index + 1}`);
+
+    dateElement.innerText = getDayOfWeek(date); // Update day of the week
+    tempElement.innerHTML = `${Math.round(temperature)}<span>°C</span>`;
+    weatherElement.innerText = weatherType;
+    hiLowElement.innerText = `${Math.round(minTemperature)}°C / Max: ${Math.round(maxTemperature)}°C`;
+    humidityElement.innerText = `Humidity: ${humidity}%`;
+    windElement.innerText = `Wind: ${windSpeed} m/s`;
+  });
+}
+
+
+function getDayOfWeek(date) {
+  const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  return daysOfWeek[date.getDay()];
+}
+
+// Usage: Replace the coordinates with the desired location
+
+
+
+// Usage: Replace the coordinates with the desired location278); // Example coordinates (London)
+
+
+ // Example coordinates (London)
+
+// Assuming 'data' contains your API response data
+
+
 
 function dateBuilder(d) {
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -105,4 +194,4 @@ function dateBuilder(d) {
   let year = d.getFullYear();
 
   return `${day} ${date} ${month} ${year}`;
-}
+}   

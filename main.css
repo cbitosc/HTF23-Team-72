@@ -153,4 +153,15 @@
 
   
  
- 
+ .forecast-days{
+  display: flex;
+  padding-top: 30px;;
+ }
+
+ .forecast-card{
+  padding-right: 20px;
+ }
+
+ .forecast{
+  padding-top: 20px;
+ }
