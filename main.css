@@ -159,9 +159,80 @@
  }
 
  .forecast-card{
-  padding-right: 20px;
+  width: 200px;
+      height: 200px;
+      background: linear-gradient(45deg, #3498db, #9b59b6); /* Gradient background */
+      border: 2px solid #2980b9;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Box shadow */
+      color: #fff; /* Text color */
+      text-align: center;
+      padding: 20px;
+      font-size: 12x;
+      border-radius: 10px; /* Rounded corners */
+      transition: transform 0.3s ease-in-out; /* Add a transform transition for hover effect */
+
  }
 
+ .forecast-card:hover {
+  transform: scale(1.05); /* Add scale transformation on hover */
+ }
  .forecast{
   padding-top: 20px;
  }
+
+ .date1,
+ .date2,
+  .date3,
+  .date4,
+  .date5,
+  .date6 {
+    padding-bottom: 10px;;
+    font-size: 20px;
+    font-weight: 500;
+    text-shadow: 0px 2px rgba(0, 0, 0, 0.4);
+    color: darkgoldenrod;
+  }
+
+  .temp1,
+  .temp2,
+  .temp3,
+  .temp4,
+  .temp5,
+  .temp6,
+  .weather1,
+  .weather2,
+  .weather3,
+  .weather4,
+  .weather5,
+  .weather6{
+
+    font-size:20px;
+    padding-bottom:10px;
+    font-weight: 500;
+    text-shadow: 0px 2px rgba(0, 0, 0, 0.4);
+  }
+
+  .hi-low1,
+  .hi-low2,
+  .hi-low3,
+  .hi-low4,
+  .hi-low5,
+  .hi-low6,
+  .humidity1,
+  .humidity2,
+  .humidity3,
+  .humidity4,
+  .humidity5,
+  .humidity6,
+  .wind1,
+  .wind2,
+  .wind3,
+  .wind4,
+  .wind5,
+  .wind6{
+    font-size: 15px;
+    font-weight: 500;
+    text-shadow: 0px 2px rgba(0, 0, 0, 0.4);
+    color: magenta;
+  }
+
