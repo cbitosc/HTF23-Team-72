@@ -76,6 +76,22 @@ function displayResults(weather) {
 
   let wind = document.querySelector('.wind');
   wind.innerText = `Wind: ${weather.wind.speed} km/h`;
+
+  if (weather.wind.speed > 32) {
+    alert('Warning! Wind speed is high!');
+  }
+
+  if (weather.main.humidity >= 70) {
+    alert('Warning! Humidity is high!');
+  }
+
+  if (weather.main.temp > 32) {
+    alert('Warning! Temperature is high!');
+  }
+
+  if (weather.main.temp < 0) {
+    alert('Warning! Temperature is low!');
+  }
 }
 
 
